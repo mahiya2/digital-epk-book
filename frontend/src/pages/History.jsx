@@ -39,6 +39,7 @@ function History() {
             route: editingEntry.route || "",
             scheduledKm: editingEntry.scheduledKm,
             operatedKm: editingEntry.operatedKm,
+            extraKm: editingEntry.extraKm,
             cancelledKm: editingEntry.cancelledKm,
             earnings: editingEntry.earnings,
             remarks: editingEntry.remarks || "",
@@ -202,6 +203,7 @@ function History() {
                 <option value="Duty">Duty</option>
                 <option value="Leave">Leave</option>
                 <option value="Special Duty">Special Duty</option>
+                <option value="Special Off">Special Off</option>
                 <option value="Weekly Off">Weekly Off</option>
                 <option value="D OFF">D OFF</option>
                 <option value="Medical/PME">Medical/PME</option>
@@ -286,7 +288,21 @@ function History() {
                 }
               />
             </div>
+                <div className="edit-group">
+  <label>Extra KM</label>
 
+  <input
+    type="number"
+    min="0"
+    value={editingEntry.extraKm || 0}
+    onChange={(e) =>
+      setEditingEntry({
+        ...editingEntry,
+        extraKm: e.target.value,
+      })
+    }
+  />
+</div>
             <div className="edit-group">
               <label>Cancelled KM</label>
 
@@ -370,6 +386,7 @@ function History() {
                   <th>Route</th>
                   <th>Scheduled KM</th>
                   <th>Operated KM</th>
+                  <th>Extra KM</th>
                   <th>Cancelled KM</th>
                   <th>Earnings</th>
                   <th>EPK</th>
@@ -396,7 +413,7 @@ function History() {
                     <td>{entry.scheduledKm}</td>
 
                     <td>{entry.operatedKm}</td>
-
+                  <td>{entry.extraKm || 0}</td>
                     <td>{entry.cancelledKm}</td>
 
                     <td>₹{entry.earnings}</td>

@@ -10,17 +10,21 @@ function DataEntry() {
   const [route, setRoute] = useState("");
   const [scheduledKm, setScheduledKm] = useState("");
   const [operatedKm, setOperatedKm] = useState("");
+  const [extraKm, setExtraKm] = useState("");
   const [cancelledKm, setCancelledKm] = useState("");
   const [earnings, setEarnings] = useState("");
   const [remarks, setRemarks] = useState("");
 
-  const calculateEpk = () => {
-    if (!operatedKm || Number(operatedKm) === 0) {
-      return "0.00";
-    }
+const calculateEpk = () => {
+  const totalKm =
+    Number(operatedKm || 0) + Number(extraKm || 0);
 
-    return (Number(earnings || 0) / Number(operatedKm)).toFixed(2);
-  };
+  if (totalKm === 0) {
+    return "0.00";
+  }
+
+  return (Number(earnings || 0) / totalKm).toFixed(2);
+};
 
 const handleSave = async (e) => {
   e.preventDefault();
@@ -38,6 +42,7 @@ if (!datePattern.test(date)) {
   if (
   Number(scheduledKm) < 0 ||
   Number(operatedKm) < 0 ||
+  Number(extraKm) < 0 ||
   Number(cancelledKm) < 0 ||
   Number(earnings) < 0
 ) {
@@ -82,6 +87,7 @@ if (Number(cancelledKm) > Number(scheduledKm)) {
   scheduledKm,
   operatedKm,
   cancelledKm,
+  extraKm,
   earnings,
   remarks,
 }),
@@ -102,6 +108,7 @@ if (Number(cancelledKm) > Number(scheduledKm)) {
       setRoute("");
       setScheduledKm("");
       setOperatedKm("");
+      setExtraKm("");
       setCancelledKm("");
       setEarnings("");
       setRemarks("");
@@ -149,6 +156,7 @@ if (Number(cancelledKm) > Number(scheduledKm)) {
               <option value="Duty">Duty</option>
               <option value="Leave">Leave</option>
               <option value="Special Duty">Special Duty</option>
+              <option value="Special Off">Special Off</option>
               <option value="Weekly Off">Weekly Off</option>
               <option value="D OFF">D OFF</option>
               <option value="Medical/PME">Medical/PME</option>
@@ -205,7 +213,16 @@ if (Number(cancelledKm) > Number(scheduledKm)) {
               onChange={(e) => setOperatedKm(e.target.value)}
             />
           </div>
-
+   <div className="entry-group">
+  <label>📏 Extra KM</label>
+  <input
+    type="number"
+    min="0"
+    value={extraKm}
+    onChange={(e) => setExtraKm(e.target.value)}
+    placeholder="Enter extra KM"
+  />
+</div>
           <div className="entry-group">
            <label>❌ Cancelled KM</label>
             <input

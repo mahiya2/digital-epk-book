@@ -41,6 +41,10 @@ const epkEntrySchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    extraKm: {
+  type: Number,
+  default: 0,
+},
 
     cancelledKm: {
       type: Number,

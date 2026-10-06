@@ -14,6 +14,7 @@ const {
   route,
   scheduledKm,
   operatedKm,
+  extraKm,
   earnings,
   remarks,
 } = req.body;
@@ -27,6 +28,7 @@ const {
 if (
   Number(scheduledKm) < 0 ||
   Number(operatedKm) < 0 ||
+    Number(extraKm) < 0 ||
   Number(earnings) < 0
 ) {
   return res.status(400).json({
@@ -39,10 +41,12 @@ if (Number(operatedKm) > Number(scheduledKm)) {
   });
 }
     // Calculate EPK
-    const epk =
-      Number(operatedKm) > 0
-        ? Number(earnings || 0) / Number(operatedKm)
-        : 0;
+   const totalKm = Number(operatedKm || 0) + Number(extraKm || 0);
+
+const epk =
+  totalKm > 0
+    ? Number(earnings) / totalKm
+    : 0;
         const [day, month, year] = date.split("/");
 
 const formattedDate = new Date(
@@ -59,6 +63,7 @@ const formattedDate = new Date(
       route,
       scheduledKm: Number(scheduledKm || 0),
       operatedKm: Number(operatedKm || 0),
+      extraKm: Number(extraKm || 0),
 cancelledKm: Math.max(
   0,
   Number(scheduledKm || 0) - Number(operatedKm || 0)
@@ -134,28 +139,32 @@ const employeeId = req.employee.employeeId;
       ),
 
       cancelledKm: entries.reduce(
-        (total, entry) => total + entry.cancelledKm,
-        0
-      ),
-
+  (total, entry) =>
+    total +
+    Math.max(0, entry.scheduledKm - entry.operatedKm),
+  0
+),
       totalEarnings: entries.reduce(
         (total, entry) => total + entry.earnings,
         0
       ),
 
-      monthlyEpk: entries.reduce(
-        (total, entry) => total + entry.operatedKm,
+    monthlyEpk:
+  entries.reduce(
+    (total, entry) =>
+      total + entry.operatedKm + (entry.extraKm || 0),
+    0
+  ) > 0
+    ? entries.reduce(
+        (total, entry) => total + entry.earnings,
         0
-      ) > 0
-        ? entries.reduce(
-            (total, entry) => total + entry.earnings,
-            0
-          ) /
-          entries.reduce(
-            (total, entry) => total + entry.operatedKm,
-            0
-          )
-        : 0,
+      ) /
+      entries.reduce(
+        (total, entry) =>
+          total + entry.operatedKm + (entry.extraKm || 0),
+        0
+      )
+    : 0,
     };
 
     res.status(200).json({
@@ -207,6 +216,7 @@ router.put("/entry/:id", authMiddleware, async (req, res) => {
       route,
       scheduledKm,
       operatedKm,
+      extraKm,
       cancelledKm,
       earnings,
       remarks,
@@ -244,11 +254,13 @@ if (isNaN(formattedDate.getTime())) {
   });
 }
 
-    const epk =
-      Number(operatedKm) > 0
-        ? Number(earnings || 0) / Number(operatedKm)
-        : 0;
+  const totalKm =
+  Number(operatedKm || 0) + Number(extraKm || 0);
 
+const epk =
+  totalKm > 0
+    ? Number(earnings || 0) / totalKm
+    : 0;
     entry.date = formattedDate;
     entry.dayType = dayType;
     entry.otherReason = otherReason;
@@ -256,6 +268,7 @@ if (isNaN(formattedDate.getTime())) {
     entry.route = route;
     entry.scheduledKm = Number(scheduledKm || 0);
     entry.operatedKm = Number(operatedKm || 0);
+    entry.extraKm = Number(extraKm || 0);
     entry.cancelledKm = Number(cancelledKm || 0);
     entry.earnings = Number(earnings || 0);
     entry.epk = epk;
