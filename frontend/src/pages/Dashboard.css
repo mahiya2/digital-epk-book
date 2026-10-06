@@ -1,0 +1,253 @@
+/* Main Dashboard Layout */
+.dashboard-layout {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  background: #f4f7fb;
+  overflow-x: hidden;
+}
+
+/* =========================
+   LEFT SIDEBAR
+========================= */
+
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #e1e5eb;
+  padding: 25px 18px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #1769e0;
+  font-size: 22px;
+  font-weight: 800;
+  padding: 10px 8px 25px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-logo span {
+  font-size: 20px;
+}
+
+.employee-info {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 22px 10px;
+  text-align: center;
+}
+
+.employee-info strong {
+  color: #172033;
+  font-size: 17px;
+}
+
+.employee-info span {
+  color: #667085;
+  font-size: 14px;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 15px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: #344054;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.sidebar-menu a:hover {
+  background: #eef4ff;
+  color: #1769e0;
+}
+
+.sidebar-menu a.active {
+  background: #1769e0;
+  color: #ffffff;
+}
+
+.sidebar-logout {
+  margin-top: auto;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #e1e5eb;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #d92d20;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sidebar-logout:hover {
+  background: #fff4f2;
+}
+
+/* =========================
+   RIGHT CONTENT AREA
+========================= */
+
+.dashboard-content {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  min-height: 100vh;
+  padding: 25px;
+  box-sizing: border-box;
+  background: #f4f7fb;
+  overflow-x: hidden;
+}
+
+/* Dashboard Home Card */
+.dashboard-content > div:not(.data-entry-page) {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 35px;
+  min-height: 300px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.dashboard-content > div:not(.data-entry-page) h1 {
+  color: #172033;
+  font-size: 38px;
+  margin: 0 0 20px;
+  text-align: center;
+}
+
+.dashboard-content > div:not(.data-entry-page) p {
+  color: #667085;
+  font-size: 17px;
+  text-align: center;
+}
+
+/* =========================
+   DATA ENTRY INSIDE DASHBOARD
+========================= */
+
+.dashboard-content .data-entry-page {
+  min-height: auto;
+  width: 100%;
+  padding: 0;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+.dashboard-content .data-entry-card {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .sidebar {
+    width: 210px;
+  }
+
+  .sidebar-logo span {
+    font-size: 16px;
+  }
+
+  .sidebar-menu a {
+    font-size: 14px;
+    padding: 12px 10px;
+  }
+
+  .dashboard-content {
+    margin-left: 210px;
+    width: calc(100% - 210px);
+    padding: 15px;
+  }
+
+  .dashboard-content > div:not(.data-entry-page) {
+    padding: 25px 18px;
+  }
+
+  .dashboard-content > div:not(.data-entry-page) h1 {
+    font-size: 28px;
+  }
+}
+.whatsapp-channel-text {
+  text-align: center;
+  color: #1769d1;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  padding: 0;
+}
+@media (max-width: 700px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: auto;
+    padding: 12px 15px;
+  }
+
+  .sidebar-logo {
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+
+  .employee-info {
+    margin-bottom: 12px;
+  }
+
+  .sidebar-menu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .sidebar-menu a {
+    padding: 10px 8px;
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .sidebar-logout {
+    margin-top: 10px;
+    padding: 10px;
+  }
+
+  .dashboard-content {
+    width: 100%;
+    margin-left: 0;
+    padding: 15px 10px;
+  }
+}

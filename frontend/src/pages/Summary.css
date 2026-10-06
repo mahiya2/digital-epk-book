@@ -1,0 +1,163 @@
+.summary-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.summary-card {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.summary-card h1 {
+  text-align: center;
+  color: #172033;
+  font-size: 32px;
+  margin: 0 0 30px;
+}
+
+.summary-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.summary-group label {
+  color: #172033;
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.summary-group input {
+  min-height: 45px;
+  padding: 8px 12px;
+  border: 1px solid #d9dee7;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #172033;
+  outline: none;
+}
+
+.summary-group input:focus {
+  border-color: #1769e0;
+  box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.1);
+}
+
+.summary-loading {
+  text-align: center;
+  color: #667085;
+  font-size: 17px;
+}
+
+/* Summary Cards */
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.summary-box {
+  background: #f8faff;
+  border: 1px solid #e1e7f0;
+  border-radius: 16px;
+  padding: 22px 15px;
+  text-align: center;
+}
+
+.summary-box span {
+  display: block;
+  font-size: 28px;
+  margin-bottom: 8px;
+}
+
+.summary-box p {
+  color: #667085;
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.summary-box strong {
+  display: block;
+  color: #172033;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+/* Earnings */
+
+.earnings-box {
+  background: #f0fff7;
+  border-color: #b7ebcf;
+}
+
+.earnings-box strong {
+  color: #07883f;
+}
+
+/* EPK */
+
+.epk-box {
+  background: #eef4ff;
+  border-color: #bfd4ff;
+}
+
+.epk-box strong {
+  color: #1769e0;
+}
+
+/* Mobile */
+
+@media (max-width: 800px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 550px) {
+  .summary-page {
+    padding: 0;
+  }
+
+  .summary-card {
+    padding: 22px 15px;
+    border-radius: 18px;
+  }
+
+  .summary-card h1 {
+    font-size: 26px;
+    margin-bottom: 25px;
+  }
+
+  .summary-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .summary-box {
+    padding: 18px;
+  }
+}
+.whatsapp-channel-text {
+  text-align: center;
+  color: #1769d1;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  padding: 0;
+}

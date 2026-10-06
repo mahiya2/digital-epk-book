@@ -1,0 +1,239 @@
+.history-page {
+  width: 100%;
+  min-height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.history-card {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 30px;
+  box-sizing: border-box;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.history-card h1 {
+  text-align: center;
+  color: #172033;
+  font-size: 32px;
+  margin: 0 0 25px;
+}
+
+.history-card > p {
+  text-align: center;
+  color: #667085;
+  font-size: 17px;
+}
+
+.history-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  min-width: 1100px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.history-table th {
+  background: #1769e0;
+  color: #ffffff;
+  padding: 13px 10px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.history-table td {
+  padding: 13px 10px;
+  border-bottom: 1px solid #e5e7eb;
+  text-align: center;
+  color: #344054;
+  white-space: nowrap;
+}
+
+.history-table tbody tr:hover {
+  background: #f8faff;
+}
+
+.history-table tbody tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+/* Mobile */
+@media (max-width: 700px) {
+  .history-page {
+    padding: 0;
+  }
+
+  .history-card {
+    padding: 20px 12px;
+    border-radius: 18px;
+  }
+
+  .history-card h1 {
+    font-size: 26px;
+  }
+}
+/* Edit EPK Form */
+.edit-form {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto 30px;
+  padding: 28px;
+  background: #f8faff;
+  border: 1px solid #dbe5f5;
+  border-radius: 18px;
+  box-sizing: border-box;
+}
+
+.edit-form h2 {
+  margin: 0 0 25px;
+  text-align: center;
+  color: #172033;
+  font-size: 26px;
+}
+
+.edit-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.edit-group label {
+  color: #172033;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.edit-group input,
+.edit-group select,
+.edit-group textarea {
+  width: 100%;
+  min-height: 50px;
+  padding: 12px 14px;
+  border: 1px solid #d9dee7;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #172033;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.edit-group input:focus,
+.edit-group select:focus,
+.edit-group textarea:focus {
+  border-color: #1769e0;
+  box-shadow: 0 0 0 3px rgba(23, 105, 224, 0.1);
+}
+
+.edit-group textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.edit-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.save-edit-button,
+.cancel-edit-button {
+  flex: 1;
+  min-height: 50px;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.save-edit-button {
+  background: #1769e0;
+  color: white;
+}
+
+.save-edit-button:hover {
+  background: #1258bd;
+}
+
+.cancel-edit-button {
+  background: #ffffff;
+  color: #d92d20;
+  border: 1px solid #d9dee7;
+}
+
+.cancel-edit-button:hover {
+  background: #fff4f2;
+}
+
+/* History Action Buttons */
+.edit-button,
+.delete-button {
+  display: block;
+  width: 100%;
+  min-width: 90px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 4px 0;
+}
+
+.edit-button {
+  background: #eef4ff;
+  color: #1769e0;
+  border: 1px solid #bfd4ff;
+}
+
+.edit-button:hover {
+  background: #dce9ff;
+}
+
+.delete-button {
+  background: #fff4f2;
+  color: #d92d20;
+  border: 1px solid #f5c2bd;
+}
+
+.delete-button:hover {
+  background: #ffe5e1;
+}
+
+/* Mobile Edit Form */
+@media (max-width: 600px) {
+  .edit-form {
+    padding: 20px 15px;
+    border-radius: 16px;
+  }
+
+  .edit-form h2 {
+    font-size: 23px;
+  }
+
+  .edit-actions {
+    flex-direction: column;
+  }
+
+  .save-edit-button,
+  .cancel-edit-button {
+    width: 100%;
+  }
+}
+.whatsapp-channel-text {
+  text-align: center;
+  color: #1769d1;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  padding: 0;
+}
